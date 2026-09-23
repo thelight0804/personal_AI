@@ -28,3 +28,11 @@ resource "aws_s3_bucket_public_access_block" "public-access" {
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
+
+# tfstate 파일 versioning
+resource "aws_s3_bucket_versioning" "personal-ai-tfstate" {
+  bucket = aws_s3_bucket.personal-ai-tfstate-048013208539.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
